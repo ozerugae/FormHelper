@@ -496,13 +496,13 @@
   typeof define === "function" && define.amd
     ? define
     : function (deps, factory) {
-        if (typeof module !== "undefined" && module.exports) {
-          //Node
-          module.exports = factory(require("jquery"));
-        } else {
-          window.fhToastr = factory(window.jQuery);
-        }
+      if (typeof module !== "undefined" && module.exports) {
+        //Node
+        module.exports = factory(require("jquery"));
+      } else {
+        window.fhToastr = factory(window.jQuery);
       }
+    }
 );
 
 // FORM HELPER
@@ -725,9 +725,23 @@
           }
         },
         error: function (request, status, error) {
-          console.error(request.responseText);
-          fhToastr.error(request.responseText, null, toastrOptions);
-        },
+          $form.find("button[type='submit']").removeAttr("disabled");
+          var handled = false;
+
+          if (request.status === 429) {
+            fhToastr.warning("You're sending requests too quickly! Please slow down and try again in a little while. 😊", null, toastrOptions);
+            handled = true;
+          }
+
+          if (request.status === 500) {
+            fhToastr.error(request.responseText || "An unexpected error occurred! Please try again later.", null, toastrOptions);
+            handled = true;
+          }
+
+          if (!handled) {
+            fhToastr.error(request.responseText || "An unexpected error occurred!", null, toastrOptions);
+          }
+        }
       });
 
       //end ajax request

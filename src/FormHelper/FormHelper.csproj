@@ -16,6 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="C:\Users\ed\repos\FormHelper\src\FormHelper\.editorconfig" />
     <None Include="images\formhelper-icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
   
@@ -57,6 +58,10 @@
 
   <ItemGroup>
     <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\ed\repos\FormHelper\src\FormHelper\.editorconfig" />
   </ItemGroup>
 
 <!--  <ItemGroup>-->
