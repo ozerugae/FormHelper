@@ -55,6 +55,10 @@
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="8.0.13" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+  </ItemGroup>
+
 <!--  <ItemGroup>-->
 <!--    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />-->
 <!--  </ItemGroup>-->
